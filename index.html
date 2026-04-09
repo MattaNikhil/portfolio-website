@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M Nikhil | Data Analyst Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- PREMIUM DARK AESTHETIC --- */
+        :root {
+            --bg-main: #030303;
+            --bg-card: #0A0A0A;
+            --text-main: #FFFFFF;
+            --text-muted: #888888;
+            --border-color: #222222;
+            --accent: #A855F7; 
+            --accent-gradient: linear-gradient(135deg, #A855F7, #EC4899);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; }
+        
+        .outline-heading {
+            font-size: 6vw;
+            text-align: center;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+            color: transparent;
+            letter-spacing: 2px;
+            margin-bottom: 60px;
+            transition: color 0.5s, -webkit-text-stroke 0.5s;
+        }
+
+        .outline-heading:hover {
+            color: var(--text-main);
+            -webkit-text-stroke: 0px;
+        }
+
+        /* --- Navigation --- */
+        header {
+            padding: 25px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(3, 3, 3, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo { font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; }
+
+        nav { display: flex; gap: 35px; }
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: var(--accent); }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(236, 72, 153, 0.5); }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 120px 5% 0;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        .hero-content { flex: 1; min-width: 300px; z-index: 2; }
+        
+        .hero-tag {
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            line-height: 1;
+            letter-spacing: -2px;
+            margin-bottom: 25px;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 550px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .hero-image-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Professional Frame for the JPG image */
+        .image-frame {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 30px;
+            padding: 15px;
+            background: linear-gradient(145deg, #111111, #000000);
+            box-shadow:  20px 20px 60px #010101, -20px -20px 60px #050505;
+            border: 1px solid rgba(255,255,255,0.05);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .image-frame img {
+            width: 100%;
+            border-radius: 20px;
+            display: block;
+            opacity: 0.95;
+            transition: opacity 0.3s;
+        }
+
+        .image-frame:hover img { opacity: 1; }
+
+        /* --- Marquee --- */
+        .marquee {
+            width: 100%;
+            overflow: hidden;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+            margin-top: 80px;
+            display: flex;
+            white-space: nowrap;
+        }
+        .marquee-content { display: flex; animation: scroll 20s linear infinite; }
+        .marquee-content span { font-family: 'Montserrat'; font-size: 1.5rem; margin: 0 40px; color: var(--text-muted); }
+
+        /* --- Global Layout --- */
+        section { padding: 120px 5%; max-width: 1200px; margin: 0 auto; }
+
+        /* --- Expertise Section (Video Style) --- */
+        .list-row {
+            display: flex;
+            align-items: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            transition: padding-left 0.4s;
+            cursor: default;
+        }
+        .list-row:last-child { border-bottom: 1px solid var(--border-color); }
+        .list-row:hover { padding-left: 20px; border-color: var(--accent); }
+
+        .list-num {
+            font-family: 'Montserrat'; font-size: 2.5rem; font-weight: 900;
+            width: 100px; color: var(--text-muted); transition: color 0.4s;
+        }
+        .list-row:hover .list-num { color: var(--accent); }
+
+        .list-info { flex: 1; }
+        .list-info h3 { font-size: 1.8rem; margin-bottom: 10px; }
+        .list-info p { color: var(--text-muted); max-width: 600px; line-height: 1.6; }
+
+        /* --- Projects Grid --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--accent-gradient); transform: scaleX(0); transform-origin: left; transition: 0.4s;
+        }
+        .project-card:hover { transform: translateY(-10px); }
+        .project-card:hover::before { transform: scaleX(1); }
+
+        .project-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .tech-tags { margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+        .tech-tags span {
+            font-size: 0.75rem; font-weight: 700; padding: 6px 12px;
+            border-radius: 20px; background: rgba(255,255,255,0.05); color: var(--accent);
+        }
+        .project-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; }
+
+        /* --- Footer / Contact --- */
+        .contact-cta { text-align: center; padding: 100px 0; border-top: 1px solid var(--border-color); }
+        .contact-email {
+            font-family: 'Montserrat'; font-size: clamp(2rem, 5vw, 4rem);
+            color: var(--text-main); text-decoration: none; display: inline-block;
+            margin: 20px 0; transition: color 0.3s;
+        }
+        .contact-email:hover { color: var(--accent); }
+
+        footer {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 30px 5%; border-top: 1px solid var(--border-color); font-size: 0.9rem; color: var(--text-muted);
+        }
+        .footer-links a { color: var(--text-main); text-decoration: none; margin-left: 20px; font-weight: 600; }
+        .footer-links a:hover { color: var(--accent); }
+
+        /* --- Animations --- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        @keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0); } }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .hero { flex-direction: column; text-align: center; padding-top: 150px; }
+            .hero-desc { margin: 0 auto 30px; }
+            .hero-buttons { justify-content: center; }
+            .list-row { flex-direction: column; align-items: flex-start; }
+            .list-num { margin-bottom: 10px; }
+            footer { flex-direction: column; gap: 20px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">M NIKHIL</div>
+        <nav>
+            <a href="#expertise">Expertise</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+        </nav>
+        <a href="Nikhil_Resume.pdf" target="_blank" class="btn-primary">Download Resume</a>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content reveal">
+            <span class="hero-tag">Available for Hire</span>
+            <h1 class="hero-title">DATA ANALYST.</h1>
+            <p class="hero-desc">I transform 100,000+ row datasets into actionable strategic decisions. Specializing in SQL, Python, and Power BI to build intelligent, data-driven systems that optimize operations.</p>
+            <div style="display: flex; gap: 15px;">
+                <a href="#projects" class="btn-primary">View Projects</a>
+                <a href="#contact" style="padding: 12px 28px; color: white; text-decoration: none; font-weight: 600; border: 1px solid var(--border-color); border-radius: 30px; transition: 0.3s;">Contact Me</a>
+            </div>
+        </div>
+        <div class="hero-image-wrapper reveal" style="transition-delay: 0.2s;">
+            <div class="image-frame">
+                <img src="94362d5ffc8d53fccd1b4c2692926296.jpg" alt="M Nikhil">
+            </div>
+        </div>
+    </div>
+
+    <div class="marquee">
+        <div class="marquee-content">
+            <span>SQL</span> <span>•</span> <span>PYTHON</span> <span>•</span> <span>POWER BI</span> <span>•</span> <span>TABLEAU</span> <span>•</span> <span>MACHINE LEARNING</span> <span>•</span> <span>DAX</span> <span>•</span>
+            <span>SQL</span> <span>•</span> <span>PYTHON</span> <span>•</span> <span>POWER BI</span> <span>•</span> <span>TABLEAU</span> <span>•</span> <span>MACHINE LEARNING</span> <span>•</span> <span>DAX</span> <span>•</span>
+        </div>
+    </div>
+
+    <section id="expertise">
+        <h2 class="outline-heading reveal">CORE EXPERTISE</h2>
+        
+        <div class="list-row reveal">
+            <div class="list-num">01</div>
+            <div class="list-info">
+                <h3>Data Visualization</h3>
+                <p>Building interactive Power BI and Tableau dashboards, utilizing custom DAX Time Intelligence to uncover operational bottlenecks and track critical KPIs.</p>
+            </div>
+        </div>
+
+        <div class="list-row reveal">
+            <div class="list-num">02</div>
+            <div class="list-info">
+                <h3>Predictive Analytics & ML</h3>
+                <p>Engineering Machine Learning recommendation systems and forecasting models (Random Forest, Gradient Boosting) using Python to optimize factory reallocation.</p>
+            </div>
+        </div>
+
+        <div class="list-row reveal">
+            <div class="list-num">03</div>
+            <div class="list-info">
+                <h3>Database Management</h3>
+                <p>Architecting robust relational databases in MySQL and executing complex SQL queries to ingest, clean, and process massive operational e-commerce datasets.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="outline-heading reveal">LIVE PROJECTS</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card reveal">
+                <h3>Factory Reallocation System</h3>
+                <div class="tech-tags">
+                    <span>Python</span> <span>Streamlit</span> <span>Machine Learning</span>
+                </div>
+                <p>Built a predictive decision intelligence system to optimize factory-to-product assignments. Evaluated predictive models (RMSE, MAE) to forecast lead times and designed an interactive Streamlit application.</p>
+            </div>
+
+            <div class="project-card reveal" style="transition-delay: 0.1s;">
+                <h3>E-Commerce Sales Analytics</h3>
+                <div class="tech-tags">
+                    <span>MySQL</span> <span>Power BI</span> <span>DAX</span>
+                </div>
+                <p>Architected a database to ingest 100,000+ rows of Olist e-commerce data. Engineered Power BI dashboards featuring a custom DAX DateTable, uncovering bottlenecks between delivery times and freight values.</p>
+            </div>
+
+            <div class="project-card reveal" style="transition-delay: 0.2s;">
+                <h3>HR Metric Optimization</h3>
+                <div class="tech-tags">
+                    <span>Python</span> <span>Power Query</span>
+                </div>
+                <p>Processed 5,000+ employee records, achieving 98% data accuracy. Built interactive Power BI dashboards, improving HR metric visibility by 40% and cutting manual reporting time by 50%.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="outline-heading reveal">EXPERIENCE</h2>
+        
+        <div class="list-row reveal">
+            <div class="list-num" style="font-size: 1.5rem;">2026</div>
+            <div class="list-info">
+                <h3>Data Analyst Intern <span style="color: var(--accent); font-size: 1rem; margin-left: 10px;">@ Unified Mentor</span></h3>
+                <p>Engineered a Machine Learning recommendation system standardizing shipping routes. Conducted efficiency analysis designing smart Excel templates that saved 40% in reporting time.</p>
+            </div>
+        </div>
+
+        <div class="list-row reveal">
+            <div class="list-num" style="font-size: 1.5rem;">2024</div>
+            <div class="list-info">
+                <h3>M.Sc. Data Science <span style="color: var(--accent); font-size: 1rem; margin-left: 10px;">@ Gitam College</span></h3>
+                <p>Graduated with 6.9/10 CGPA. Certified in Advance Data Science With Python (Nasscom) and GenAI Powered Data Analytics (Tata).</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="contact" class="contact-cta reveal">
+        <h4 style="color: var(--accent); letter-spacing: 2px;">READY TO COLLABORATE?</h4>
+        <a href="mailto:matta.nikhil02@gmail.com" class="contact-email">matta.nikhil02@gmail.com</a>
+        <p style="color: var(--text-muted);">Currently accepting opportunities for Data Analyst roles.</p>
+    </div>
+
+    <footer>
+        <div>© 2026 M Nikhil. Data Analyst.</div>
+        <div class="footer-links">
+            <a href="https://linkedin.com/in/mnikhil" target="_blank">LinkedIn</a>
+            <a href="Nikhil_Resume.pdf" target="_blank">Resume</a>
+        </div>
+    </footer>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 50) { reveals[i].classList.add("active"); }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        setTimeout(reveal, 100); // Trigger immediately for hero section
+    </script>
+</body>
+</html>
