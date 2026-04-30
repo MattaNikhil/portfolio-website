@@ -4,3 +4,4 @@ Once you have pasted that text into the box, look at the top right of the screen
 Click the green "Commit changes..." button.
 
 A small box will pop up. You don't need to type anything in there. Just click the green "Commit changes" button inside that box.
+U also make like this.
